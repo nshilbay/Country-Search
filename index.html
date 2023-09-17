@@ -11,6 +11,19 @@
     <!-- Place your content here -->
     <h1>Country Search</h1>
 
+    <!--Create Search Bars-->
+    <form class = "searchBars">
+        <label>Search with Name:</label>
+        <input type = "text" id = "searchByName" placeholder = "Name">
+        <button onclick = "searchCountryUsingName()">Go</button>
+    </form>
+    <br>
+    <form class = "searchBars">
+        <label>Search with Currency:</label>
+        <input type = "text" id = "searchByCurrencyCode" placeholder = "Currency Code">
+        <button onclick = "searchCountryUsingCurrencyCode()">Go</button>
+    </form>
+
     <!-- Country List -->
     <ul>
         <li>

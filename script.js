@@ -62,5 +62,37 @@ const countriesList =[
 ]    
 
 function searchCountryUsingName(){
-    
+    const searchValue = document.getElementById("searchByName").value.toLowerCase();
+    const results = [];
+
+    for (const country of countriesList){
+        if (country.name.toLowerCase().startsWith(searchValue) && results.length < 5){
+            results.push(country);
+        }
+    }
+
+    displayMatches(results);
+}
+
+function searchCountryUsingCurrencyCode(){
+    const searchValue = document.getElementById("searchByCurrencyCode").value.toUpperCase();
+    const results = [];
+
+    for (const country of countriesList){
+        if (country.currency.toUpperCase() == searchValue && results.length < 5){
+            results.push(country);
+        }
+    }
+
+    displayMatches(results);
+}
+
+function displayMatches(results){
+    let message = "Matches Found: \n";
+
+    for(let i =0; i < results.length; i++){
+        message += `${results[i].name} - ${results[i].currency}\n`;
+    }
+
+    alert (message);
 }

@@ -62,6 +62,13 @@ const countriesList =[
 ]    
 
 function searchCountryUsingName(){
+    const checkInputValidity = validateInput("searchByName");
+    
+    if(!checkInputValidity){
+        alert("Invalid Input");
+        return;
+    }
+
     const searchValue = document.getElementById("searchByName").value.toLowerCase();
     const results = [];
 
@@ -75,16 +82,43 @@ function searchCountryUsingName(){
 }
 
 function searchCountryUsingCurrencyCode(){
+
+    const checkInputValidity = validateInput("searchByCurrencyCode");
+    if(!checkInputValidity){
+        alert("Invalid Input");
+        return;
+    }
     const searchValue = document.getElementById("searchByCurrencyCode").value.toUpperCase();
     const results = [];
 
     for (const country of countriesList){
-        if (country.currency.toUpperCase() == searchValue && results.length < 5){
+        if (country.currency.toUpperCase() === searchValue && results.length < 5){
             results.push(country);
         }
     }
 
     displayMatches(results);
+}
+
+function validateInput(validatingInputId){
+    const input = document.getElementById(validatingInputId).value;
+
+        if (validatingInputId === 'searchByName')
+        {
+            if ((!/\d/.test(input)) && input.length <=20)
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (/^[A-Z]{3}$/.test(input))
+            {
+                return true;
+            }
+        }
+
+        return false;
 }
 
 function displayMatches(results){

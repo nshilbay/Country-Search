@@ -122,11 +122,19 @@ function validateInput(validatingInputId){
 }
 
 function displayMatches(results){
-    let message = "Matches Found: \n";
 
-    for(let i =0; i < results.length; i++){
-        message += `${results[i].name} - ${results[i].currency}\n`;
+    if (results.length === 0)
+    {
+        alert("No Matches Found");
     }
+    else{
 
-    alert (message);
+        let message = "Matches Found: \n";
+        for(let i =0; i < results.length; i++){
+            message += `${results[i].name} - ${results[i].currency}\n`;
+        }
+        alert (message);
+
+    }
+   
 }

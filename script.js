@@ -267,7 +267,8 @@ function dynamicallyDisplayMatches(results){
             resList.appendChild(resItem);
         }
 
-        
+        matchesContainer.appendChild(resList);
+
     }
 
 

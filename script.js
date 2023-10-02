@@ -138,3 +138,13 @@ function displayMatches(results){
     }
    
 }
+
+function dynamicallyDisplayMatches(results){
+    const matchesContainer = document.getElementById("dynamicResultsContainer")
+    
+    //this loop clears any previous matches
+    while (matchesContainer.firstChild){
+        matchesContainer.removeChild(matchesContainer.firstChild)
+    }
+
+}

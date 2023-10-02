@@ -256,14 +256,18 @@ function dynamicallyDisplayMatches(results){
             wikiElement.href = "${country.wikiUrl}"
             wikiElement.textContent = "Wikipedia Page"
 
-            //append elements
+            //append elements 
             resItem.appendChild(img);
             resItem.appendChild(nameElement);
             resItem.appendChild(currencyElement);
             resItem.appendChild(regionsElement);
             resItem.appendChild(wikiElement);
 
+            //append list item to the results list
+            resList.appendChild(resItem);
         }
+
+        
     }
 
 

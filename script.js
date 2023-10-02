@@ -234,11 +234,27 @@ function dynamicallyDisplayMatches(results){
     else{ //show container if there are matches
         matchesContainer.style.display == "block";
 
-        for (const country of results){
-            const countryElement = document.createElement("div");
+        const resList = document.createElement("ul");
 
+        for (const country of results){ 
+            const countryElement = document.createElement("li");
+            
             const img = document.createElement("img");
-            img.src - country.
+            img.src - country.imgUrl;
+            img.alt = "Flag of ${country.name}";
+
+            const nameElement = document.createElement("b");
+            nameElement.textContent = country.name;
+
+            const currencyElement = document.createElement("p");
+            currencyElement.textContent = 'Currency: ${country.currency}';
+
+            const regionsElement = document.createElement("p");
+            regionsElement.textContent = "Regions: ${country.regions}"
+
+            const wikiElement = document.createElement("a");
+            wikiElement.href = "${country.wikiUrl}"
+            wikiElement.textContent = "Wikipedia Page"
         }
     }
 

@@ -237,7 +237,7 @@ function dynamicallyDisplayMatches(results){
         const resList = document.createElement("ul");
 
         for (const country of results){ 
-            const countryElement = document.createElement("li");
+            const resItem = document.createElement("li");
             
             const img = document.createElement("img");
             img.src - country.imgUrl;
@@ -255,6 +255,14 @@ function dynamicallyDisplayMatches(results){
             const wikiElement = document.createElement("a");
             wikiElement.href = "${country.wikiUrl}"
             wikiElement.textContent = "Wikipedia Page"
+
+            //append elements
+            resItem.appendChild(img);
+            resItem.appendChild(nameElement);
+            resItem.appendChild(currencyElement);
+            resItem.appendChild(regionsElement);
+            resItem.appendChild(wikiElement);
+
         }
     }
 

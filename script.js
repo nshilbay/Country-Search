@@ -152,13 +152,19 @@ function searchCountryUsingName(){
     const searchValue = document.getElementById("searchByName").value.toLowerCase();
     const results = [];
 
+    if (searchValue === ""){
+        dynamicallyDisplayMatches(results);
+        return;
+    }
+
     for (const country of countriesList){
         if (country.name.toLowerCase().startsWith(searchValue) && results.length < 5){
             results.push(country);
         }
     }
 
-    displayMatches(results);
+    //displayMatches(results);
+    dynamicallyDisplayMatches(results)
 }
 
 function searchCountryUsingCurrencyCode(){
@@ -171,13 +177,19 @@ function searchCountryUsingCurrencyCode(){
     const searchValue = document.getElementById("searchByCurrencyCode").value.toUpperCase();
     const results = [];
 
+    if (searchValue === ""){
+        dynamicallyDisplayMatches(results);
+        return;
+    }
+
     for (const country of countriesList){
-        if (country.currency.toUpperCase() === searchValue && results.length < 5){
+        if (country.currency.toUpperCase().startsWith(searchValue) && results.length < 5){
             results.push(country);
         }
     }
 
-    displayMatches(results);
+    //displayMatches(results);
+    dynamicallyDisplayMatches(results)
 }
 
 function validateInput(validatingInputId){
@@ -192,7 +204,7 @@ function validateInput(validatingInputId){
         }
         else
         {
-            if (/^[A-Z]{3}$/.test(input))
+            if (/^[A-Z]{0,3}$/.test(input))
             {
                 return true;
             }
@@ -229,10 +241,10 @@ function dynamicallyDisplayMatches(results){
 
     //the if statement is to hide the container if there are no matches
     if (results.length === 0){
-        matchesContainer.style.display == "none";
+        matchesContainer.style.display = "none";
     }
     else{ //show container if there are matches
-        matchesContainer.style.display == "block";
+        matchesContainer.style.display = "block";
 
         const resList = document.createElement("ul");
 
@@ -240,20 +252,22 @@ function dynamicallyDisplayMatches(results){
             const resItem = document.createElement("li");
             
             const img = document.createElement("img");
-            img.src - country.imgUrl;
-            img.alt = "Flag of ${country.name}";
+            img.className = "image";
+            img.src = country.imgUrl;
+            img.alt = `Flag of ${country.name}`;
 
             const nameElement = document.createElement("b");
+            nameElement.className = "name";
             nameElement.textContent = country.name;
 
             const currencyElement = document.createElement("p");
-            currencyElement.textContent = 'Currency: ${country.currency}';
+            currencyElement.textContent = `Currency: ${country.currency}`;
 
             const regionsElement = document.createElement("p");
-            regionsElement.textContent = "Regions: ${country.regions}"
+            regionsElement.textContent = `Regions: ${country.regions}`;
 
             const wikiElement = document.createElement("a");
-            wikiElement.href = "${country.wikiUrl}"
+            wikiElement.href = country.wikiUrl;
             wikiElement.textContent = "Wikipedia Page"
 
             //append elements 
@@ -268,9 +282,8 @@ function dynamicallyDisplayMatches(results){
         }
 
         matchesContainer.appendChild(resList);
-
     }
-
-
-
 }
+
+document.getElementById("searchByName").addEventListener("input",searchCountryUsingName);
+document.getElementById("searchByCurrencyCode").addEventListener("input", searchCountryUsingCurrencyCode);

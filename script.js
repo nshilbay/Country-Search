@@ -163,7 +163,6 @@ function searchCountryUsingName(){
         }
     }
 
-    //displayMatches(results);
     dynamicallyDisplayMatches(results)
 }
 
@@ -188,7 +187,6 @@ function searchCountryUsingCurrencyCode(){
         }
     }
 
-    //displayMatches(results);
     dynamicallyDisplayMatches(results)
 }
 
@@ -213,23 +211,6 @@ function validateInput(validatingInputId){
         return false;
 }
 
-function displayMatches(results){
-
-    if (results.length === 0)
-    {
-        alert("No Matches Found");
-    }
-    else{
-
-        let message = "Matches Found: \n";
-        for(let i =0; i < results.length; i++){
-            message += `${results[i].name} - ${results[i].currency}\n`;
-        }
-        alert (message);
-
-    }
-   
-}
 
 function dynamicallyDisplayMatches(results){
     const matchesContainer = document.getElementById("dynamicResultsContainer")
@@ -256,6 +237,9 @@ function dynamicallyDisplayMatches(results){
             img.src = country.imgUrl;
             img.alt = `Flag of ${country.name}`;
 
+            const lineBreak = document.createElement("br");
+
+
             const nameElement = document.createElement("b");
             nameElement.className = "name";
             nameElement.textContent = country.name;
@@ -272,6 +256,7 @@ function dynamicallyDisplayMatches(results){
 
             //append elements 
             resItem.appendChild(img);
+            resItem.appendChild(lineBreak);
             resItem.appendChild(nameElement);
             resItem.appendChild(currencyElement);
             resItem.appendChild(regionsElement);

@@ -85,7 +85,7 @@ function searchCountryUsingCurrencyCode(){
 
     const checkInputValidity = validateInput("searchByCurrencyCode");
     if(!checkInputValidity){
-        alert("Invalid Input: Entry must be three letters & all capitals");
+        alert("Invalid Input: Entry must be three letters and all capitals");
         return;
     }
     const searchValue = document.getElementById("searchByCurrencyCode").value.toUpperCase();

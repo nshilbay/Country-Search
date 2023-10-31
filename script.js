@@ -65,7 +65,7 @@ function searchCountryUsingName(){
     const checkInputValidity = validateInput("searchByName");
     
     if(!checkInputValidity){
-        alert("Invalid Input");
+        alert("Invalid Input: Only enter letters");
         return;
     }
 
@@ -85,7 +85,7 @@ function searchCountryUsingCurrencyCode(){
 
     const checkInputValidity = validateInput("searchByCurrencyCode");
     if(!checkInputValidity){
-        alert("Invalid Input");
+        alert("Invalid Input: Entry must be three letters & all capitals");
         return;
     }
     const searchValue = document.getElementById("searchByCurrencyCode").value.toUpperCase();
